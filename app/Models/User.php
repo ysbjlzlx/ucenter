@@ -4,7 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class User.
+ *
+ * @property string username 用户名
+ * @property string password 密码
+ */
 class User extends \Illuminate\Foundation\Auth\User
 {
     use HasFactory;
@@ -16,9 +23,9 @@ class User extends \Illuminate\Foundation\Auth\User
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
+        'username',
         'password',
+        'email',
     ];
 
     /**
@@ -28,7 +35,6 @@ class User extends \Illuminate\Foundation\Auth\User
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -39,4 +45,9 @@ class User extends \Illuminate\Foundation\Auth\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
+    }
 }
