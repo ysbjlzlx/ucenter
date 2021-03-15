@@ -50,4 +50,9 @@ class User extends \Illuminate\Foundation\Auth\User
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function tokens()
+    {
+       return $this->hasMany(Token::class,'user_id');
+    }
 }
