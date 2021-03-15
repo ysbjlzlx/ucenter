@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\UserLoginSuccess;
 use App\Http\Controllers\Controller;
 use App\Http\Services\TokenService;
 use App\Models\User;
@@ -34,6 +35,7 @@ class LoginController extends Controller
         }
         // 登录成功
         $token = $this->tokenService->createToken($user);
+        event(new UserLoginSuccess($user));
 
         return response()->json(success(['access_token' => $token->access_token]));
     }
