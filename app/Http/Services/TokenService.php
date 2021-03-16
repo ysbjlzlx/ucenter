@@ -23,6 +23,11 @@ class TokenService
         return $token;
     }
 
+    public function getToken(string $accessToken)
+    {
+        return Token::query()->where('access_token', $accessToken)->first();
+    }
+
     private function generateToken(User $user)
     {
         return Str::random();

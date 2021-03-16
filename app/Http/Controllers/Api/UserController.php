@@ -4,7 +4,14 @@
 namespace App\Http\Controllers\Api;
 
 
-class UserController
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
 {
+    public function profile(Request $request){
+        return $request->user()->toArray();
+    }
+
 
 }

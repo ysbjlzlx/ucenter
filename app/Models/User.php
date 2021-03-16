@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 /**
  * Class User.
@@ -34,7 +35,10 @@ class User extends \Illuminate\Foundation\Auth\User
      * @var array
      */
     protected $hidden = [
+        'id',
         'password',
+        'updated_at',
+        'created_at',
     ];
 
     /**
@@ -51,8 +55,15 @@ class User extends \Illuminate\Foundation\Auth\User
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public function getEmailAttribute($value)
+    {
+        $arr = explode('@', $value, 2);
+
+        return Str::limit($arr[0], 3, '***@'.$arr[1]);
+    }
+
     public function tokens()
     {
-       return $this->hasMany(Token::class,'user_id');
+        return $this->hasMany(Token::class, 'user_id');
     }
 }
