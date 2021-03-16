@@ -11,4 +11,5 @@ Route::post('auth/login', [LoginController::class, 'login']);
 
 Route::middleware([TokenAuthenticate::class])->group(function () {
     Route::get('user/profile', [UserController::class, 'profile']);
+    Route::post('user/password/change', [UserController::class, 'changePassword']);
 });
