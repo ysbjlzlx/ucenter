@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
         });
         $this->renderable(function (ValidationException $exception, Request $request) {
             if ($request->acceptsJson()) {
-                return response()->json(success($exception->errors()));
+               // return response()->json(success($exception->errors()));
             }
         });
     }

@@ -12,7 +12,9 @@ singleQuote: false
 endOfLine: lf
 
 overrides:
-  - files: "*.html"
+  - files: 
+      - "*.html"
+      - "*.blade.php"
     options: 
-      printWidth: 150
-      tabWidth: 4
+      printWidth: 180
+      tabWidth: 2

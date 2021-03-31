@@ -28,19 +28,18 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $rules = [
-            'username' => 'required|string|min:3',
+            'email' => 'required|string|email',
             'password' => 'required|string|min:6',
         ];
         $request->validate($rules);
-        $user = User::query()->where('username', $request->input('username'))->first();
+        $user = User::query()->where('email', $request->input('email'))->first();
         if (empty($user)) {
-            throw ValidationException::withMessages(['username' => '用户不存在']);
+            throw ValidationException::withMessages(['email' => '用户不存在']);
         }
         if (!Hash::check($request->input('password'), $user->password)) {
             throw ValidationException::withMessages(['password' => '密码错误']);
         }
         // 登录成功
-        $token = $this->tokenService->createToken($user);
         event(new UserLoginSuccess($user));
         // 
         Auth::login($user);
