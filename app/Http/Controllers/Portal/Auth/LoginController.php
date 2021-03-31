@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\TokenService;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -41,7 +42,9 @@ class LoginController extends Controller
         // 登录成功
         $token = $this->tokenService->createToken($user);
         event(new UserLoginSuccess($user));
+        // 
+        Auth::login($user);
 
-        return response()->json(success(['access_token' => $token->access_token]));
+        return redirect()->route('home.home');
     }
 }
