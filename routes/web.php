@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'loginForm']);
 Route::post('/login', [LoginController::class, 'login']);
+
+
