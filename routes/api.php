@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Portal\Api\Auth\LoginController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\TokenAuthenticate;

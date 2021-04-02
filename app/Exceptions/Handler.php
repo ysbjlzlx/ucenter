@@ -14,8 +14,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    protected $dontReport = [
-    ];
+    protected $dontReport = [];
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -39,7 +38,7 @@ class Handler extends ExceptionHandler
         });
         $this->renderable(function (ValidationException $exception, Request $request) {
             if ($request->acceptsJson()) {
-               // return response()->json(success($exception->errors()));
+                return response()->json(error('A0001', 'ERROR', $exception->errors()), 422);
             }
         });
     }
