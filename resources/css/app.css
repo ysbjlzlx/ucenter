@@ -4,11 +4,23 @@
 @tailwind screens;
 
 .form-input {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
 }
-.form-label{
-    @apply block text-gray-700 text-sm font-bold mb-2;
+.form-label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
 }
-.btn-primary{
-    @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none;
+.btn-primary {
+  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+#app {
+  min-height: 100vh;
+}
+main {
+  flex: 1;
 }

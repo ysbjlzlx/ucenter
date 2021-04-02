@@ -183936,7 +183936,7 @@ video {
   width: 100%;
 }
 
-.form-label{
+.form-label {
   display: block;
   font-weight: 700;
   font-size: 0.875rem;
@@ -183946,7 +183946,7 @@ video {
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
-.btn-primary{
+.btn-primary {
   --tw-bg-opacity: 1;
   background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
 }
@@ -183974,3 +183974,18 @@ video {
   --tw-text-opacity: 1;
   color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+

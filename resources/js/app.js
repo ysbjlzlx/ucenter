@@ -10,7 +10,7 @@ const el = document.getElementById('app')
 render(
   <App
     initialPage={JSON.parse(el.dataset.page)}
-    resolveComponent={name => require(`./pages/${name}`).default}
+    resolveComponent={name => require(`./Pages/${name}`).default}
   />,
   el
 )

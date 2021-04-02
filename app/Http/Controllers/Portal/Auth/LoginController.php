@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
 
 class LoginController extends Controller
 {
@@ -22,7 +23,7 @@ class LoginController extends Controller
 
     public function loginForm()
     {
-        return view('portal.auth.login');
+        return Inertia::render('Auth/Login');
     }
 
     public function login(Request $request)
@@ -41,7 +42,7 @@ class LoginController extends Controller
         }
         // 登录成功
         event(new UserLoginSuccess($user));
-        // 
+
         Auth::login($user);
 
         return redirect()->route('home.home');
