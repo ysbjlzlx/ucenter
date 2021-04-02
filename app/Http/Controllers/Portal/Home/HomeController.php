@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Portal\Home;
 
 use App\Http\Controllers\Controller;
 
-class HomeConttroller extends Controller
+class HomeController extends Controller
 {
     public function home()
     {

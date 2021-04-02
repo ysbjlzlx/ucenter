@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Portal\Home;
 
 use App\Http\Controllers\Controller;
 
-class ProfileConttroller extends Controller
+class ProfileController extends Controller
 {
     public function profile()
     {

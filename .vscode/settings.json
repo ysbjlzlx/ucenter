@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.blade.php": "html",
+        ".prettierrc": "yaml"
+    },
+    "files.autoGuessEncoding": true
+}
