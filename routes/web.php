@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Portal\Auth\LoginController;
+use App\Http\Controllers\Portal\Auth\RegisterController;
+use App\Http\Controllers\Portal\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'loginForm']);
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/login', [LoginController::class, 'loginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'registerForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
-
+Route::middleware('web')->group(function () {
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
+});

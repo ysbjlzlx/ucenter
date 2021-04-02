@@ -44,6 +44,6 @@ class LoginController extends Controller
         // 
         Auth::login($user);
 
-        return redirect()->route('home.home');
+        return redirect()->route('home');
     }
 }

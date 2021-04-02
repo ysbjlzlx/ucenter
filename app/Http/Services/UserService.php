@@ -6,10 +6,10 @@ use App\Models\User;
 
 class UserService
 {
-    public function createUser(string $username, string $password, array $extra): User
+    public function createUser(string $email, string $password, array $extra): User
     {
         $user = new User();
-        $user->username = $username;
+        $user->email = $email;
         $user->password = $password;
         $user->save();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -23,13 +24,14 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $rules = [
-            'username' => 'required|string|between:3,16',
+            'email' => 'required|string|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required',
         ];
         $request->validate($rules);
-        $user = $this->userService->createUser($request->input('username'), $request->input('password'), $request->all());
+        $user = $this->userService->createUser($request->input('email'), $request->input('password'), $request->all());
+        Auth::login($user);
 
-        return $user;
+        return redirect()->route('home');
     }
 }
