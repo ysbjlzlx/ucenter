@@ -1,1 +1,16 @@
 require('./bootstrap');
+
+import { App } from '@inertiajs/inertia-react'
+import React from 'react'
+import { render } from 'react-dom'
+import 'antd/dist/antd.css'
+
+const el = document.getElementById('app')
+
+render(
+  <App
+    initialPage={JSON.parse(el.dataset.page)}
+    resolveComponent={name => require(`./pages/${name}`).default}
+  />,
+  el
+)
