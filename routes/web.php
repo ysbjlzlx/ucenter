@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [LoginController::class, 'loginForm'])->name('login');
+Route::get('/login', [LoginController::class, 'loginForm'])->name('auth.login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'registerForm'])->name('register');
+Route::get('/register', [RegisterController::class, 'registerForm'])->name('auth.register');
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::middleware('web')->group(function () {
