@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Portal\Home;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function profile()
+    public function profile(Request $request)
     {
-        return view('portal.profile.home');
+        $data = [
+            'user' => $request->user(),
+        ];
+
+        return view('portal.home.profile', $data);
     }
 }

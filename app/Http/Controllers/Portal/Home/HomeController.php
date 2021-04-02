@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('portal.home.home');
+        return redirect()->route('home.profile');
     }
 }

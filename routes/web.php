@@ -3,6 +3,7 @@
 use App\Http\Controllers\Portal\Auth\LoginController;
 use App\Http\Controllers\Portal\Auth\RegisterController;
 use App\Http\Controllers\Portal\Home\HomeController;
+use App\Http\Controllers\Portal\Home\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,6 @@ Route::get('/register', [RegisterController::class, 'registerForm'])->name('regi
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::middleware('web')->group(function () {
-    Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::get('/home', [HomeController::class, 'home'])->name('home.home');
+    Route::get('/profile', [profileController::class, 'profile'])->name('home.profile');
 });

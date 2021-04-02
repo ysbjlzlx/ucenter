@@ -32,6 +32,6 @@ class RegisterController extends Controller
         $user = $this->userService->createUser($request->input('email'), $request->input('password'), $request->all());
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('home.home');
     }
 }
