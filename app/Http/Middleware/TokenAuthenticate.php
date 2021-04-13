@@ -6,6 +6,7 @@ use App\Http\Services\TokenService;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class TokenAuthenticate
@@ -24,11 +25,13 @@ class TokenAuthenticate
      */
     public function handle(Request $request, Closure $next)
     {
+        $bearerToken = $request->bearerToken();
         $rules = [
             'access_token' => 'required|string',
         ];
-        $request->validate($rules);
-        $token = $this->tokenService->getToken($request->input('access_token'));
+        Validator::validate(['access_token' => $bearerToken], $rules);
+
+        $token = $this->tokenService->getToken($bearerToken);
         if (empty($token)) {
             throw ValidationException::withMessages(['access_token' => 'access_token in invalid.']);
         }

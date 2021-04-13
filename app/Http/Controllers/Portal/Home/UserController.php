@@ -11,7 +11,9 @@ class UserController extends Controller
 {
     public function profile(Request $request)
     {
-        return $request->user()->toArray();
+        $user = $request->user()->toArray();
+
+        return response()->json(success($user));
     }
 
     public function changePassword(Request $request)

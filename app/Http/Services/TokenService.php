@@ -23,6 +23,11 @@ class TokenService
         return $token;
     }
 
+    public function deleteToken(string $accessToken)
+    {
+        return Token::query()->where('access_token', $accessToken)->delete();
+    }
+
     public function getToken(string $accessToken)
     {
         return Token::query()->where('access_token', $accessToken)->first();

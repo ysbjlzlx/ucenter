@@ -19,6 +19,7 @@ export default function Login() {
     login(values)
       .then((response) => {
         console.log(response);
+        window.localStorage.setItem("access_token", response.data.data.access_token);
         window.location.href = "/home";
       })
       .catch((error) => {

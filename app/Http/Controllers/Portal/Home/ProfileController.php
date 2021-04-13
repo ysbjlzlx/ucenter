@@ -3,16 +3,12 @@
 namespace App\Http\Controllers\Portal\Home;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ProfileController extends Controller
 {
-    public function profile(Request $request)
+    public function profilePage()
     {
-        $data = [
-            'user' => $request->user(),
-        ];
-
-        return view('portal.home.profile', $data);
+        return Inertia::render('Home/Profile');
     }
 }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "@/Api/RequestClient";
 
 export function login(data) {
   return axios.post("/api/auth/login", data);

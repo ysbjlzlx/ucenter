@@ -25,5 +25,5 @@ Route::get('/register', [RegisterController::class, 'registerForm']);
 
 Route::middleware('web')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home.home');
-    Route::get('/profile', [profileController::class, 'profile'])->name('home.profile');
+    Route::get('/profile', [profileController::class, 'profilePage'])->name('home.profile');
 });
