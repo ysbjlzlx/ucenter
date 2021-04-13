@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,7 @@ class RegisterController extends Controller
 
     public function registerForm()
     {
-        return view('portal.auth.register');
+        return Inertia::render('Auth/Login');
     }
 
     public function register(Request $request)
@@ -32,6 +33,6 @@ class RegisterController extends Controller
         $user = $this->userService->createUser($request->input('email'), $request->input('password'), $request->all());
         Auth::login($user);
 
-        return redirect()->route('home.home');
+        return response()->json(success());
     }
 }

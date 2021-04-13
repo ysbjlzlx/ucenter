@@ -4,7 +4,7 @@ use App\Http\Controllers\Portal\Auth\LoginController;
 use App\Http\Controllers\Portal\Auth\RegisterController;
 use App\Http\Controllers\Portal\Home\HomeController;
 use App\Http\Controllers\Portal\Home\ProfileController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\Portal\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::any('/index', [IndexController::class, 'index']);
+Route::any('/', [IndexController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'loginForm'])->name('auth.login');
 Route::post('/login', [LoginController::class, 'login']);
