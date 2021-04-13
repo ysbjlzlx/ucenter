@@ -20,10 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::any('/', [IndexController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'loginForm'])->name('auth.login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/register', [RegisterController::class, 'registerForm'])->name('auth.register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/login', [LoginController::class, 'loginForm']);
+Route::get('/register', [RegisterController::class, 'registerForm']);
 
 Route::middleware('web')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home.home');

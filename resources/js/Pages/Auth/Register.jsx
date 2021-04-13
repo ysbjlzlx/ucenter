@@ -1,25 +1,40 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-import { Inertia } from "@inertiajs/inertia";
-import { login } from "@/Api/Auth";
+import { register } from "@/Api/Auth";
 import AppLayout from "@/Layouts/AppLayout";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState({});
   const [password, setPassword] = useState({});
+  const [password_confirmation, setPasswordConfirmation] = useState({});
+  const [registerForm] = Form.useForm();
+  const handleConfirmPasswordValidation = (rule, value, callback) => {
+    const password = registerForm.getFieldValue("password");
+    if (password && value && password === value) {
+      return Promise.resolve();
+    }
+    return Promise.reject("密码不一致");
+  };
+
   const rules = {
-    email: [{ required: true, message: "请输入邮箱" }],
+    email: [
+      { required: true, message: "请输入邮箱" },
+      { type: "email", message: "请输入正确格式的邮箱" },
+    ],
     password: [
       { required: true, message: "请输入密码" },
       { min: 6, message: "密码最短为 6 位" },
     ],
+    password_confirmation: [
+      { required: true, message: "请输入确认密码" },
+      { validator: handleConfirmPasswordValidation },
+    ],
   };
   const onFinish = (values) => {
     // console.log("Success:", values);
-    login(values)
+    register(values)
       .then((response) => {
         console.log(response);
-        window.location.href = "/home";
       })
       .catch((error) => {
         if (422 === error.response.status) {
@@ -40,7 +55,7 @@ export default function Login() {
   };
   return (
     <AppLayout>
-      <Form name="basic" onFinish={onFinish}>
+      <Form form={registerForm} name="basic" onFinish={onFinish}>
         <Form.Item
           label="邮箱"
           name="email"
@@ -59,8 +74,17 @@ export default function Login() {
         >
           <Input.Password placeholder="******" />
         </Form.Item>
+        <Form.Item
+          label="确认密码"
+          name="password_confirmation"
+          rules={rules.password_confirmation}
+          validateStatus={password_confirmation.validateStatus}
+          help={password_confirmation.errorMsg}
+        >
+          <Input.Password placeholder="******" />
+        </Form.Item>
         <Button type="primary" htmlType="submit">
-          登录
+          注册
         </Button>
       </Form>
     </AppLayout>
