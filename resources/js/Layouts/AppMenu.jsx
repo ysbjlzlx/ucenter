@@ -13,14 +13,21 @@ const userMenu = () => {
       }
     });
   }, []);
-  const handleLogout = () => {
-    logout().then(() => {
-      window.localStorage.removeItem("access_token");
-      window.location.href = "/";
-    });
+  const handleClickMenu = (e) => {
+    switch (e.key) {
+      case "auth:logout":
+        logout().then(() => {
+          window.localStorage.removeItem("access_token");
+          window.location.href = "/";
+        });
+        break;
+      case "user:profile":
+        window.location.href = "/home";
+        break;
+    }
   };
   return (
-    <Menu mode="horizontal" theme="dark">
+    <Menu onClick={handleClickMenu} mode="horizontal" theme="dark">
       <Menu.Item key="index">
         <InertiaLink href="/">首页</InertiaLink>
       </Menu.Item>
@@ -29,7 +36,8 @@ const userMenu = () => {
         title={userProfile.email}
         style={{ float: "right" }}
       >
-        <Menu.Item onClick={handleLogout}>退出</Menu.Item>
+        <Menu.Item key="user:profile">个人中心</Menu.Item>
+        <Menu.Item key="auth:logout">退出</Menu.Item>
       </Menu.SubMenu>
     </Menu>
   );

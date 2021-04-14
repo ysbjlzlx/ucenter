@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import AppMenu from "./AppMenu";
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Footer, Content } = Layout;
 
 export default function AppLayout(props) {
   return (

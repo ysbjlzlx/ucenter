@@ -12928,7 +12928,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var Header = antd__WEBPACK_IMPORTED_MODULE_3__.default.Header,
     Footer = antd__WEBPACK_IMPORTED_MODULE_3__.default.Footer,
-    Sider = antd__WEBPACK_IMPORTED_MODULE_3__.default.Sider,
     Content = antd__WEBPACK_IMPORTED_MODULE_3__.default.Content;
 function AppLayout(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_3__.default, {
@@ -12941,6 +12940,51 @@ function AppLayout(props) {
       children: props.children
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Footer, {
       children: "Footer"
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Layouts/AppLoginedLayout.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/Layouts/AppLoginedLayout.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AppLoginedLayout)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/layout/index.js");
+/* harmony import */ var _AppMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppMenu */ "./resources/js/Layouts/AppMenu.jsx");
+/* harmony import */ var _AppSider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppSider */ "./resources/js/Layouts/AppSider.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+var Header = antd__WEBPACK_IMPORTED_MODULE_4__.default.Header,
+    Footer = antd__WEBPACK_IMPORTED_MODULE_4__.default.Footer,
+    Sider = antd__WEBPACK_IMPORTED_MODULE_4__.default.Sider,
+    Content = antd__WEBPACK_IMPORTED_MODULE_4__.default.Content;
+function AppLoginedLayout(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__.default, {
+    style: {
+      minHeight: "100vh"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Header, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_AppMenu__WEBPACK_IMPORTED_MODULE_1__.default, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Sider, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_AppSider__WEBPACK_IMPORTED_MODULE_2__.default, {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Content, {
+        children: props.children
+      })]
     })]
   });
 }
@@ -13000,14 +13044,23 @@ var userMenu = function userMenu() {
     });
   }, []);
 
-  var handleLogout = function handleLogout() {
-    (0,_Api_Auth__WEBPACK_IMPORTED_MODULE_3__.logout)().then(function () {
-      window.localStorage.removeItem("access_token");
-      window.location.href = "/";
-    });
+  var handleClickMenu = function handleClickMenu(e) {
+    switch (e.key) {
+      case "auth:logout":
+        (0,_Api_Auth__WEBPACK_IMPORTED_MODULE_3__.logout)().then(function () {
+          window.localStorage.removeItem("access_token");
+          window.location.href = "/";
+        });
+        break;
+
+      case "user:profile":
+        window.location.href = "/home";
+        break;
+    }
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__.default, {
+    onClick: handleClickMenu,
     mode: "horizontal",
     theme: "dark",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default.Item, {
@@ -13015,15 +13068,16 @@ var userMenu = function userMenu() {
         href: "/",
         children: "\u9996\u9875"
       })
-    }, "index"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default.SubMenu, {
+    }, "index"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_5__.default.SubMenu, {
       title: userProfile.email,
       style: {
         "float": "right"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default.Item, {
-        onClick: handleLogout,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default.Item, {
+        children: "\u4E2A\u4EBA\u4E2D\u5FC3"
+      }, "user:profile"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default.Item, {
         children: "\u9000\u51FA"
-      })
+      }, "auth:logout")]
     }, "SubMenu")]
   });
 };
@@ -13059,6 +13113,41 @@ var guestMenu = function guestMenu() {
 
 function AppMenu() {
   return window.localStorage.getItem("access_token") ? userMenu() : guestMenu();
+}
+
+/***/ }),
+
+/***/ "./resources/js/Layouts/AppSider.jsx":
+/*!*******************************************!*\
+  !*** ./resources/js/Layouts/AppSider.jsx ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ AppSider)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/menu/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function AppSider() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__.default, {
+    mode: "inline",
+    theme: "dark",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_2__.default.ItemGroup, {
+      title: "Item 1",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__.default.Item, {
+        children: "Option 1"
+      }, "1"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__.default.Item, {
+        children: "Option 2"
+      }, "2")]
+    }, "g1")
+  });
 }
 
 /***/ }),
@@ -13360,7 +13449,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Api_User__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Api/User */ "./resources/js/Api/User.js");
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.jsx");
+/* harmony import */ var _Layouts_AppLoginedLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLoginedLayout */ "./resources/js/Layouts/AppLoginedLayout.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -13372,7 +13461,7 @@ function Profile() {
       console.log(response);
     });
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_AppLoginedLayout__WEBPACK_IMPORTED_MODULE_2__.default, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       children: "Profile"
     })

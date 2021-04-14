@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { profile } from "@/Api/User";
-import AppLayout from "@/Layouts/AppLayout";
+import AppLoginedLayout from "@/Layouts/AppLoginedLayout";
 
 export default function Profile() {
   useEffect(() => {
@@ -9,8 +9,8 @@ export default function Profile() {
     });
   });
   return (
-    <AppLayout>
+    <AppLoginedLayout>
       <div>Profile</div>
-    </AppLayout>
+    </AppLoginedLayout>
   );
 }
