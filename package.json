@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
-        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-beta.1",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-beta.2",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21",
         "laravel-mix": "^6.0.16",
@@ -20,7 +20,7 @@
         "react-refresh": "^0.10.0"
     },
     "dependencies": {
-        "@inertiajs/inertia": "^0.8.6",
+        "@inertiajs/inertia": "^0.8.7",
         "@inertiajs/inertia-react": "^0.5.11",
         "antd": "^4.15.1",
         "react": "^17.0.2",
