@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
 
 class UserController extends Controller
 {
@@ -14,6 +15,11 @@ class UserController extends Controller
         $user = $request->user()->toArray();
 
         return response()->json(success($user));
+    }
+
+    public function changePasswordPage()
+    {
+        return Inertia::render('Home/Account/ChangePassword');
     }
 
     public function changePassword(Request $request)
