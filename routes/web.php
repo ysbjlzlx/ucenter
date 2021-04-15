@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Portal\Auth\LoginController;
 use App\Http\Controllers\Portal\Auth\RegisterController;
+use App\Http\Controllers\Portal\Home\AccountController;
 use App\Http\Controllers\Portal\Home\HomeController;
 use App\Http\Controllers\Portal\Home\ProfileController;
-use App\Http\Controllers\Portal\Home\UserController;
 use App\Http\Controllers\Portal\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +27,9 @@ Route::get('/register', [RegisterController::class, 'registerForm']);
 Route::middleware('web')->group(function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home.home');
     Route::get('/profile', [profileController::class, 'profilePage'])->name('home.profile');
-    Route::get('/home/account/password/change', [UserController::class, 'changePasswordPage']);
+    /*
+     * account
+     */
+    Route::get('/home/account/password/change', [AccountController::class, 'changePasswordPage']);
+    Route::get('/home/account/avatar/change', [AccountController::class, 'changeAvatarPage']);
 });

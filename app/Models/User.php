@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
@@ -60,6 +61,11 @@ class User extends \Illuminate\Foundation\Auth\User
         $arr = explode('@', $value, 2);
 
         return Str::limit($arr[0], 3, '***@'.$arr[1]);
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        return empty($value) ? $value : Storage::url($value);
     }
 
     public function tokens()
