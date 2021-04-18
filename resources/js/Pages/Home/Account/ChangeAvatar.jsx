@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Breadcrumb, Form, Input, Button, message, Upload } from "antd";
+import { InertiaLink } from "@inertiajs/inertia-react";
+import {
+  Breadcrumb,
+  Form,
+  Input,
+  Button,
+  message,
+  Upload,
+  PageHeader,
+} from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { changeAvatar, profile } from "@/Api/User";
 import AppLoginedLayout from "@/Layouts/AppLoginedLayout";
@@ -29,25 +38,39 @@ export default function ChangeAvatar() {
     </div>
   );
 
+  const breadcrumb = () => {
+    return (
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <InertiaLink href="/">首页</InertiaLink>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <InertiaLink href="/home/account">个人中心</InertiaLink>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <InertiaLink href="">修改头像</InertiaLink>
+        </Breadcrumb.Item>
+      </Breadcrumb>
+    );
+  };
+
   return (
     <AppLoginedLayout>
-      <Breadcrumb>
-        <Breadcrumb.Item>首页</Breadcrumb.Item>
-        <Breadcrumb.Item>个人中心</Breadcrumb.Item>
-        <Breadcrumb.Item>修改头像</Breadcrumb.Item>
-      </Breadcrumb>
-      <Upload
-        name="avatar"
-        listType="picture-card"
-        showUploadList={false}
-        customRequest={handleChange}
-      >
-        {avatar ? (
-          <img src={avatar} alt="avatar" style={{ width: "100%" }} />
-        ) : (
-          uploadButton
-        )}
-      </Upload>
+      <PageHeader breadcrumbRender={breadcrumb} />
+      <div style={{ marginLeft: "24px" }}>
+        <Upload
+          name="avatar"
+          listType="picture-card"
+          showUploadList={false}
+          customRequest={handleChange}
+        >
+          {avatar ? (
+            <img src={avatar} alt="avatar" style={{ width: "100%" }} />
+          ) : (
+            uploadButton
+          )}
+        </Upload>
+      </div>
     </AppLoginedLayout>
   );
 }

@@ -11,8 +11,10 @@ use Illuminate\Support\Str;
 /**
  * Class User.
  *
+ * @property int id ID
  * @property string username 用户名
  * @property string password 密码
+ * @property string email 邮箱
  */
 class User extends \Illuminate\Foundation\Auth\User
 {

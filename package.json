@@ -20,6 +20,7 @@
         "react-refresh": "^0.10.0"
     },
     "dependencies": {
+        "@ant-design/icons": "^4.6.2",
         "@inertiajs/inertia": "^0.8.7",
         "@inertiajs/inertia-react": "^0.5.11",
         "antd": "^4.15.1",
