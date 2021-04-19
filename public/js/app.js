@@ -17875,7 +17875,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "profile": () => (/* binding */ profile),
 /* harmony export */   "changePassword": () => (/* binding */ changePassword),
-/* harmony export */   "changeAvatar": () => (/* binding */ changeAvatar)
+/* harmony export */   "changeAvatar": () => (/* binding */ changeAvatar),
+/* harmony export */   "destroy": () => (/* binding */ destroy)
 /* harmony export */ });
 /* harmony import */ var _Api_RequestClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Api/RequestClient */ "./resources/js/Api/RequestClient.js");
 
@@ -17887,6 +17888,9 @@ function changePassword(data) {
 }
 function changeAvatar(data) {
   return _Api_RequestClient__WEBPACK_IMPORTED_MODULE_0__.default.post("/api/account/avatar/change", data);
+}
+function destroy() {
+  return _Api_RequestClient__WEBPACK_IMPORTED_MODULE_0__.default.post("/api/account/destroy");
 }
 
 /***/ }),
@@ -18130,6 +18134,10 @@ var handleSiderMenuClick = function handleSiderMenuClick(e) {
     case "user:account:changeAvatar":
       window.location.href = "/home/account/avatar/change";
       break;
+
+    case "user:account:destroy":
+      window.location.href = "/home/account/destroy";
+      break;
   }
 };
 
@@ -18144,7 +18152,9 @@ function AppSider() {
         children: "\u4FEE\u6539\u5BC6\u7801"
       }, "user:account:changePassword"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__.default.Item, {
         children: "\u4FEE\u6539\u5934\u50CF"
-      }, "user:account:changeAvatar")]
+      }, "user:account:changeAvatar"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(antd__WEBPACK_IMPORTED_MODULE_2__.default.Item, {
+        children: "\u5220\u9664\u8D26\u53F7"
+      }, "user:account:destroy")]
     }, "g1")
   });
 }
@@ -18704,6 +18714,57 @@ function ChangePassword() {
         children: "\u4FEE\u6539\u5BC6\u7801"
       })]
     })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Home/Account/Destroy.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/Pages/Home/Account/Destroy.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Destroy)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/breadcrumb/index.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/page-header/index.js");
+/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
+/* harmony import */ var _Layouts_AppLoginedLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLoginedLayout */ "./resources/js/Layouts/AppLoginedLayout.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+function Destroy() {
+  var handleBreadcrumbRender = function handleBreadcrumbRender() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(antd__WEBPACK_IMPORTED_MODULE_4__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__.default.Item, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.InertiaLink, {
+          href: "/",
+          children: "\u9996\u9875"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__.default.Item, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.InertiaLink, {
+          href: "/profile",
+          children: "\u4E2A\u4EBA\u4E2D\u5FC3"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_4__.default.Item, {
+        children: "\u5220\u9664\u8D26\u6237"
+      })]
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Layouts_AppLoginedLayout__WEBPACK_IMPORTED_MODULE_2__.default, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(antd__WEBPACK_IMPORTED_MODULE_5__.default, {
+      breadcrumbRender: handleBreadcrumbRender
+    })
   });
 }
 
@@ -88979,6 +89040,8 @@ var map = {
 	"./Home/Account/ChangeAvatar.jsx": "./resources/js/Pages/Home/Account/ChangeAvatar.jsx",
 	"./Home/Account/ChangePassword": "./resources/js/Pages/Home/Account/ChangePassword.jsx",
 	"./Home/Account/ChangePassword.jsx": "./resources/js/Pages/Home/Account/ChangePassword.jsx",
+	"./Home/Account/Destroy": "./resources/js/Pages/Home/Account/Destroy.jsx",
+	"./Home/Account/Destroy.jsx": "./resources/js/Pages/Home/Account/Destroy.jsx",
 	"./Home/Profile": "./resources/js/Pages/Home/Profile.jsx",
 	"./Home/Profile.jsx": "./resources/js/Pages/Home/Profile.jsx",
 	"./Index": "./resources/js/Pages/Index.jsx",

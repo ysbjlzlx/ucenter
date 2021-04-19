@@ -9,6 +9,9 @@ const handleSiderMenuClick = (e) => {
     case "user:account:changeAvatar":
       window.location.href = "/home/account/avatar/change";
       break;
+    case "user:account:destroy":
+      window.location.href = "/home/account/destroy";
+      break;
   }
 };
 
@@ -18,6 +21,7 @@ export default function AppSider() {
       <Menu.ItemGroup key="g1" title="个人中心">
         <Menu.Item key="user:account:changePassword">修改密码</Menu.Item>
         <Menu.Item key="user:account:changeAvatar">修改头像</Menu.Item>
+        <Menu.Item key="user:account:destroy">删除账号</Menu.Item>
       </Menu.ItemGroup>
     </Menu>
   );

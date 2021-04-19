@@ -11,3 +11,7 @@ export function changePassword(data) {
 export function changeAvatar(data) {
   return axios.post("/api/account/avatar/change", data);
 }
+
+export function destroy() {
+  return axios.post("/api/account/destroy");
+}

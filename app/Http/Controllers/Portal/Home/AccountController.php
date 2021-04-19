@@ -29,6 +29,11 @@ class AccountController extends Controller
         return Inertia::render('Home/Account/ChangePassword');
     }
 
+    public function destroyPage()
+    {
+        return Inertia::render('Home/Account/Destroy');
+    }
+
     public function profile(Request $request)
     {
         $user = $request->user()->toArray();
