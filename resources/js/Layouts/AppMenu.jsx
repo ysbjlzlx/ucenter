@@ -16,10 +16,15 @@ const userMenu = () => {
   const handleClickMenu = (e) => {
     switch (e.key) {
       case "auth:logout":
-        logout().then(() => {
-          window.localStorage.removeItem("access_token");
-          window.location.href = "/";
-        });
+        logout()
+          .then(() => {
+            window.localStorage.removeItem("access_token");
+            window.location.href = "/";
+          })
+          .catch(() => {
+            window.localStorage.removeItem("access_token");
+            window.location.href = "/";
+          });
         break;
       case "user:profile":
         window.location.href = "/home";
