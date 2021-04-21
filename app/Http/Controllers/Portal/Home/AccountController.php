@@ -7,6 +7,7 @@ use App\Http\Services\AccountService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -27,6 +28,11 @@ class AccountController extends Controller
     public function changePasswordPage()
     {
         return Inertia::render('Home/Account/ChangePassword');
+    }
+
+    public function changeProfilePage()
+    {
+        return Inertia::render('Home/Account/ChangeProfile');
     }
 
     public function destroyPage()
@@ -76,6 +82,19 @@ class AccountController extends Controller
         $this->accountService->updateAccount($request->user(), ['password' => $request->input('new_password')]);
 
         return response()->json(success());
+    }
+
+    public function changeProfile(Request $request)
+    {
+        $rules = [
+            'username' => ['string', 'min:3', Rule::unique('users')->ignore($request->user()->id)],
+            'nickname' => 'string|min:3',
+        ];
+        $params = $request->validate($rules);
+
+        $this->accountService->updateAccount($request->user(), $params);
+
+        return success();
     }
 
     /**

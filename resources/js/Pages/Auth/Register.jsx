@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { register } from "@/Api/Auth";
 import AppLayout from "@/Layouts/AppLayout";
 
@@ -35,6 +35,8 @@ export default function Register() {
     register(values)
       .then((response) => {
         console.log(response);
+        message.success("注册成功！跳转登录页面");
+        window.location.href = "/login";
       })
       .catch((error) => {
         if (422 === error.response.status) {

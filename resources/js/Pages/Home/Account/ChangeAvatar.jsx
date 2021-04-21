@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { InertiaLink } from "@inertiajs/inertia-react";
-import {
-  Breadcrumb,
-  Form,
-  Input,
-  Button,
-  message,
-  Upload,
-  PageHeader,
-} from "antd";
+import { Breadcrumb, message, Upload, PageHeader } from "antd";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import { changeAvatar, profile } from "@/Api/User";
 import AppLoginedLayout from "@/Layouts/AppLoginedLayout";
@@ -27,7 +19,10 @@ export default function ChangeAvatar() {
     const formData = new FormData();
     formData.append("avatar", info.file);
     changeAvatar(formData).then((response) => {
+      message.success("头像修改成功");
       console.log(response);
+      const data = response.data;
+      setAvatar(data.data.avatar);
     });
   };
 

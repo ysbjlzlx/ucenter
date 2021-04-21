@@ -21,5 +21,6 @@ Route::middleware([TokenAuthenticate::class])->group(function () {
     Route::get('account/profile', [AccountController::class, 'profile']);
     Route::post('account/avatar/change', [AccountController::class, 'changeAvatar']);
     Route::post('account/password/change', [AccountController::class, 'changePassword']);
+    Route::post('account/profile/change', [AccountController::class, 'changeProfile']);
     Route::post('account/destroy', [AccountController::class, 'destroy']);
 });

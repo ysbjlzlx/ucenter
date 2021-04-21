@@ -9,6 +9,12 @@ class AccountService
 {
     public function updateAccount(User $user, array $data)
     {
+        if (Arr::has($data, 'username') && $user->username != Arr::get($data, 'username')) {
+            $user->username = Arr::get($data, 'username');
+        }
+        if (Arr::has($data, 'nickname')) {
+            $user->nickname = Arr::get($data, 'nickname');
+        }
         if (Arr::has($data, 'avatar')) {
             $user->avatar = Arr::get($data, 'avatar');
         }

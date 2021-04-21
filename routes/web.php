@@ -32,5 +32,6 @@ Route::middleware('web')->group(function () {
      */
     Route::get('/home/account/password/change', [AccountController::class, 'changePasswordPage']);
     Route::get('/home/account/avatar/change', [AccountController::class, 'changeAvatarPage']);
+    Route::get('/home/account/profile/change', [AccountController::class, 'changeProfilePage']);
     Route::get('/home/account/destroy', [AccountController::class, 'destroyPage']);
 });

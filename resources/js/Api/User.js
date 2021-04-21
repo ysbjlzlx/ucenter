@@ -12,6 +12,10 @@ export function changeAvatar(data) {
   return axios.post("/api/account/avatar/change", data);
 }
 
+export function changeProfile(data) {
+  return axios.post("/api/account/profile/change", data);
+}
+
 export function destroy(data) {
   return axios.post("/api/account/destroy", data);
 }
