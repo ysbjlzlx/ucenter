@@ -11,19 +11,19 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
-        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-beta.4",
+        "@pmmmwh/react-refresh-webpack-plugin": "^0.5.0-beta.7",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21",
-        "laravel-mix": "^6.0.18",
+        "laravel-mix": "^6.0.19",
         "lodash": "^4.17.19",
-        "postcss": "^8.2.12",
+        "postcss": "^8.2.14",
         "react-refresh": "^0.10.0"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
         "@inertiajs/inertia": "^0.8.7",
         "@inertiajs/inertia-react": "^0.5.12",
-        "antd": "^4.15.2",
+        "antd": "^4.15.4",
         "react": "^17.0.2",
         "react-dom": "^17.0.2"
     }
